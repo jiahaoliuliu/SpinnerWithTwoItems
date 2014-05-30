@@ -12,12 +12,24 @@ package com.jiahaoliuliu.spinnerwithtwoitems;
  *
  */
 public enum PhonePrefixes {
-    EstadosUnidos("1"),
-    GR("30"),
-    PaisesBajos("31"),
-    BE("32"),
-    Francia("33"),
-    SP("34"),
+	// United States
+    US(1),
+
+    // Greece
+    GR(30),
+
+    // Kingdom of the Netherlands
+    NL(31),
+
+    // Belgium
+    BE(32),
+
+    // France
+    FR(33),
+
+    // Spain
+    ES(34);
+    /*
     Hungría("36"),
     Italia("39"),
     Rumanía("40"),
@@ -68,10 +80,11 @@ public enum PhonePrefixes {
     EmiratosArabes("971"),
     Israel("972"),
     RepublicaDominicana("1809");
+	*/
 
-    private String phonePrefix;
+    private int phonePrefix;
 
-	private PhonePrefixes(final String phonePrefix) {
+	private PhonePrefixes(final int phonePrefix) {
         this.phonePrefix = phonePrefix;
 	}
 
@@ -81,7 +94,7 @@ public enum PhonePrefixes {
 	 *
 	 * @return the phone prefix
 	 */
-	public String getPhonePrefix() {
+	public int getPhonePrefix() {
 	    return this.phonePrefix;
 	}
 

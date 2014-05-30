@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import android.app.Activity;
@@ -52,6 +53,12 @@ public class MainActivity extends Activity {
 	 */
 	private static final String TEXT2 = "text2";
 
+	/**
+	 * The locale of the device. This allow to display the countries according to the
+	 * language of the device.
+	 */
+	private Locale locale;
+
     /**
      * This overridden method initializes the ListActivity.
      * After calling the parent onCreate method, it binds the ListAdapter to the
@@ -66,6 +73,8 @@ public class MainActivity extends Activity {
 	@Override
 	protected final void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		locale = getResources().getConfiguration().locale;
+
 		final PhonePrefixes[] phonePrefixes = PhonePrefixes.values();
 		final SimpleAdapter simpleAdpater = createListAdapter(phonePrefixes);
 		
@@ -136,10 +145,17 @@ public class MainActivity extends Activity {
 		final List<Map<String, String>> listItem =
 	        new ArrayList<Map<String, String>>(states.length);
 
+		String tmpCountriesISOCode;
+		Locale tmpLocale;
 		for (final PhonePrefixes state: states) {
 			final Map<String, String> listItemMap = new HashMap<String, String>();
-			listItemMap.put(TEXT1, state.getPhonePrefix());
-			listItemMap.put(TEXT2, state.getAbbreviation());
+			listItemMap.put(TEXT1, String.valueOf(state.getPhonePrefix()));
+			tmpCountriesISOCode = state.getAbbreviation();
+			tmpLocale = new Locale("", tmpCountriesISOCode);
+			// Display the country name according to the country iso code and the
+			// device local language
+			listItemMap.put(TEXT2, 
+					tmpLocale.getDisplayCountry(locale));
 			listItem.add(Collections.unmodifiableMap(listItemMap));
 		}
 
