@@ -28,59 +28,157 @@ public enum PhonePrefixes {
     FR(33),
 
     // Spain
-    ES(34);
-    /*
-    Hungría("36"),
-    Italia("39"),
-    Rumanía("40"),
-    Suiza("41"),
-    Austria("43"),
-    ReinoUnido("44"),
-    Dinamarca("45"),
-    Suecia("46"),
-    Noruega("47"),
-    Polonia("48"),
-    Alemania("49"),
-    Peru("51"),
-    Mexico("52"),
-    Cuba("53"),
-    Argentina("54"),
-    Brasil("55"),
-    Chile("569"),
-    Colombia("57"),
-    Venezuela("58"),
-    Australia("61"),
-    NuevaZelanda("64"),
-    China("86"),
-    Marruecos("212"),
-    Congo("242"),
-    Groenlandia("299"),
-    Gibraltar("350"),
-    Portugal("351"),
-    Luxemburgo("352"),
-    Irlanda("353"),
-    Islandia("354"),
-    Albania("355"),
-    Chipre("357"),
-    Finlandia("358"),
-    Andorra("376"),
-    Mónaco("377"),
-    Croacia("385"),
-    RepublicaCheca("420"),
-    Eslovaquia("421"),
-    Liechtenstein("423"),
-    Guatemala("502"),
-    Nicaragua("505"),
-    CostaRica("506"),
-    Panama("507"),
-    Bolivia("591"),
-    Ecuador("593"),
-    Paraguay("595"),
-    Uruguay("598"),
-    EmiratosArabes("971"),
-    Israel("972"),
-    RepublicaDominicana("1809");
-	*/
+    ES(34),
+    
+    // Hungary 
+    HU(36),
+    
+    // Italy
+    IT(39),
+
+    // Romania
+    RO(40),
+
+    // Switzerland
+    CH(41),
+
+    // Austria
+    AT(43),
+
+    // United Kingdom
+    GB(44),
+
+    // Denmark
+    DK(45),
+
+    // Sweden
+    SE(46),
+
+    // Norway
+    NO(47),
+
+    // Poland
+    PL(48),
+
+    // Germany
+    DE(49),
+
+    // Peru
+    PE(51),
+
+    // Mexico
+    MX(52),
+
+    // Cuba
+    CU(53),
+
+    // Argentina
+    AR(54),
+
+    // Brazil
+    BR(55),
+
+    // Chile
+    CL(569),
+
+    // Colombia
+    CO(57),
+
+    // Venezuela
+    VE(58),
+
+    // Australia
+    AU(61),
+
+    // New Zealand
+    NZ(64),
+
+    // China
+    CN(86),
+
+    // Morocco
+    MA(212),
+
+    // Congo
+    CG(242),
+
+    // Greenland
+    GL(299),
+
+    // Gibraltar
+    GI(350),
+
+    // Portugal
+    PT(351),
+
+    // Luxembourg
+    LU(352),
+
+    // Republic of Ireland
+    IE(353),
+
+    // Iceland
+    IS(354),
+
+    // Albania
+    AL(355),
+
+    // Cyprus
+    CY(357),
+
+    // Finland
+    FI(358),
+
+    // Andorra
+    AD(376),
+
+    // Monaco
+    MC(377),
+    
+    // Croatia
+    HR(385),
+
+    // Czech Republic
+    CZ(420),
+
+    // Slovakia
+    SK(421),
+
+    // Liechtenstein
+    LI(423),
+    
+    // Guatemala
+    GT(502),
+
+    // Nicaragua
+    NI(505),
+
+    // Costa Rica
+    CR(506),
+
+    // Panama
+    PA(507),
+
+    // Bolivia
+    BO(591),
+
+    // Ecuador
+    EC(593),
+
+    // Paraguay
+    PY(595),
+
+    // Uruguay
+    UY(598),
+
+    // United Arab Emirates
+    AE(971),
+
+    // Israel
+    IL(972),
+
+    // Dominican Republic
+    DO(1809);
 
     private int phonePrefix;
 

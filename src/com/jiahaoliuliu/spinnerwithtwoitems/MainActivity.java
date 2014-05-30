@@ -124,16 +124,16 @@ public class MainActivity extends Activity {
 	 * <p />
 	 * For example, if you input
 	 * PhonePrefixes[] =
-	 *   [ DE("49"),
-	 *     SP("34"),
-     *     GR("30")
+	 *   [ DE(49),
+	 *     ES(34),
+     *     GR(30)
      *    ];
      *
 	 * the output will be
 	 * List<Map<String, String>> =
-	 *   [ {text1="49", text2="DE"},
-	 *     {text1="34", text2="SP"},
-	 *     {text1="30", text2="GR"}
+	 *   [ {text1="49", text2="Germany"},
+	 *     {text1="34", text2="Spain"},
+	 *     {text1="30", text2="Greece"}
 	 *   ];
 	 * @since 1.0
 	 *
