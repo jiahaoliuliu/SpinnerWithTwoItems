@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
 		locale = getResources().getConfiguration().locale;
 
 		final PhonePrefixes[] phonePrefixes = PhonePrefixes.values();
-		final SimpleAdapter simpleAdpater = createListAdapter(phonePrefixes);
+		final SimpleAdapter simpleAdpater = createSimpleAdapter(phonePrefixes);
 		
 		setContentView(R.layout.activity_main);
 		Spinner simpleSpinner = (Spinner)findViewById(R.id.SimpleSpinner);
@@ -101,13 +101,17 @@ public class MainActivity extends Activity {
 	 * <a href="http://developer.android.com/reference/android/R.layout.html#simple_list_item_2">simple_list_item_2</a>
 	 * layout to display an array of enum entries
 	 */
-	private SimpleAdapter createListAdapter(final PhonePrefixes[] phonePrefixes) {
+	private SimpleAdapter createSimpleAdapter(final PhonePrefixes[] phonePrefixes) {
 		final String[] fromMapKey = new String[] {TEXT1, TEXT2};
 		final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
 		final List<Map<String, String>> list = convertToListItems(phonePrefixes);
 
-		return new SimpleAdapter(this, list,
-				android.R.layout.simple_list_item_2, fromMapKey, toLayoutId);
+		SimpleAdapter simpleAdapter = new SimpleAdapter(this, list,
+				android.R.layout.simple_list_item_1, fromMapKey, toLayoutId);
+		
+		// Remove the follow line to 
+		simpleAdapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_2);
+		return simpleAdapter;
 	}
 
 	/**
