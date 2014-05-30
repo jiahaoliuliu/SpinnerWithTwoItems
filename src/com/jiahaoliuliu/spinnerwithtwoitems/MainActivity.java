@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this, list,
 				android.R.layout.simple_list_item_1, fromMapKey, toLayoutId);
 		
-		// Remove the follow line to 
+		// Remove the follow line to have the same view as dropdown view
 		simpleAdapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_2);
 		return simpleAdapter;
 	}
