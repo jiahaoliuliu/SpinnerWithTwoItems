@@ -211,4 +211,28 @@ public enum PhonePrefixes {
 	public String toString() {
 		return getAbbreviation() + ":" + getPhonePrefix();
 	}
+
+	/**
+	 * Retrieve the prefix by the iso code
+	 * @param isoCode The iso code of the countries
+	 * @return The prefix of that matches with the iso code
+	 *         First prefix if the country is not found
+	 */
+	public static PhonePrefixes fromISOCode(String isoCode) {
+		if (isoCode == null) {
+			throw new IllegalArgumentException("The iso code cannot be null");
+		}
+
+		// Select the first elementy by default
+		PhonePrefixes result = PhonePrefixes.values()[0];
+		for (PhonePrefixes phonePrefixes : values()) {
+			if (phonePrefixes.getAbbreviation() != null &&
+					phonePrefixes.getAbbreviation().equals(isoCode)) {
+				result = phonePrefixes;
+				break;
+			}
+		}
+
+		return result;
+	}
 }

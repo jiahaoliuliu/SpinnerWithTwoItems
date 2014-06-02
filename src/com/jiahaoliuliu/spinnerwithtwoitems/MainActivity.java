@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
 		Spinner simpleSpinner = (Spinner)findViewById(R.id.SimpleSpinner);
 		final TextView prefixSelectedTextview = (TextView)findViewById(R.id.prefixSelectedTextView);
 		simpleSpinner.setAdapter(simpleAdpater);
+
 		simpleSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
@@ -111,6 +112,10 @@ public class MainActivity extends Activity {
 							R.string.no_prefix_selected));
 			}
 		});
+
+		// Preselect the country of the device, if exists
+		PhonePrefixes phonePrefix = PhonePrefixes.fromISOCode(locale.getCountry());
+		simpleSpinner.setSelection(phonePrefix.ordinal());
 	}
 
 	/**
