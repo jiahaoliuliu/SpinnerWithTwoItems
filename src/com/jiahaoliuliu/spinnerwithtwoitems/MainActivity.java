@@ -9,8 +9,12 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 /**
@@ -19,8 +23,7 @@ import android.widget.Spinner;
  * android.R.layout.simple_list_item_2</a> to display an
  * array of Java enum entries in the UI.
  * <p />
- * The demo displays a list of the original US 13 colonies and its state abbreviation,
- * in order of statehood.
+ * The demo displays a list of the prefixes along with the country which each prefix belongs
  * <p />
  *  The basic technical steps are
  * <ol>
@@ -59,6 +62,11 @@ public class MainActivity extends Activity {
 	 */
 	private Locale locale;
 
+	/**
+	 * The list of the map of the contents. Each element in the list is a prefix.
+	 * Check the method convertToListItems for more information.
+	 */
+	private List<Map<String, String>> list;
     /**
      * This overridden method initializes the ListActivity.
      * After calling the parent onCreate method, it binds the ListAdapter to the
@@ -80,8 +88,29 @@ public class MainActivity extends Activity {
 		
 		setContentView(R.layout.activity_main);
 		Spinner simpleSpinner = (Spinner)findViewById(R.id.SimpleSpinner);
-		
+		final TextView prefixSelectedTextview = (TextView)findViewById(R.id.prefixSelectedTextView);
 		simpleSpinner.setAdapter(simpleAdpater);
+		simpleSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				final Map<String, String> prefix = list.get(position);
+				prefixSelectedTextview.setText(
+						// The phone prefix
+						prefix.get(TEXT1) + "\n" +
+						// The country name
+						prefix.get(TEXT2));
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				prefixSelectedTextview
+					.setText(
+						getResources().getString(
+							R.string.no_prefix_selected));
+			}
+		});
 	}
 
 	/**
@@ -104,11 +133,11 @@ public class MainActivity extends Activity {
 	private SimpleAdapter createSimpleAdapter(final PhonePrefixes[] phonePrefixes) {
 		final String[] fromMapKey = new String[] {TEXT1, TEXT2};
 		final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
-		final List<Map<String, String>> list = convertToListItems(phonePrefixes);
 
+		// Set the values to the list of maps
+		list = convertToListItems(phonePrefixes);
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this, list,
 				android.R.layout.simple_list_item_1, fromMapKey, toLayoutId);
-		
 		// Remove the follow line to have the same view as dropdown view
 		simpleAdapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_2);
 		return simpleAdapter;

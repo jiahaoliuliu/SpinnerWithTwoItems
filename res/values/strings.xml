@@ -4,5 +4,6 @@
     <string name="app_name">SpinnerWithTwoItems</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="no_prefix_selected">Please select a prefix in the spinner above</string>
 
 </resources>
