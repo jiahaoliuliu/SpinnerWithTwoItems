@@ -67,6 +67,7 @@ public class MainActivity extends Activity {
 	 * Check the method convertToListItems for more information.
 	 */
 	private List<Map<String, String>> list;
+
     /**
      * This overridden method initializes the ListActivity.
      * After calling the parent onCreate method, it binds the ListAdapter to the
@@ -83,7 +84,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		locale = getResources().getConfiguration().locale;
 
-		final PhonePrefixes[] phonePrefixes = PhonePrefixes.values();
+		final PhonePrefix[] phonePrefixes = PhonePrefix.values();
 		final SimpleAdapter simpleAdpater = createSimpleAdapter(phonePrefixes);
 		
 		setContentView(R.layout.activity_main);
@@ -114,7 +115,7 @@ public class MainActivity extends Activity {
 		});
 
 		// Preselect the country of the device, if exists
-		PhonePrefixes phonePrefix = PhonePrefixes.fromISOCode(locale.getCountry());
+		PhonePrefix phonePrefix = PhonePrefix.fromISOCode(locale.getCountry());
 		simpleSpinner.setSelection(phonePrefix.ordinal());
 	}
 
@@ -129,13 +130,13 @@ public class MainActivity extends Activity {
      * of JavaBeans.
 	 * @since 1.0
 	 *
-	 * @param states An array of {@link PhonePrefixes} enum entries
+	 * @param states An array of {@link PhonePrefix} enum entries
 	 * @return A <a href="http://developer.android.com/reference/android/widget/SimpleAdapter.html">SimpleAdapter</a>
 	 * using the
 	 * <a href="http://developer.android.com/reference/android/R.layout.html#simple_list_item_2">simple_list_item_2</a>
 	 * layout to display an array of enum entries
 	 */
-	private SimpleAdapter createSimpleAdapter(final PhonePrefixes[] phonePrefixes) {
+	private SimpleAdapter createSimpleAdapter(final PhonePrefix[] phonePrefixes) {
 		final String[] fromMapKey = new String[] {TEXT1, TEXT2};
 		final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
 
@@ -149,7 +150,7 @@ public class MainActivity extends Activity {
 	}
 
 	/**
-	 * Convert an array of {@link PhonePrefixes} into a List of Map<String, String>.
+	 * Convert an array of {@link PhonePrefix} into a List of Map<String, String>.
 	 * The List of Map<String, String> will be used as part of the constructor for
 	 * a <a href="http://developer.android.com/reference/android/widget/SimpleAdapter.html">SimpleAdapter</a>.
 	 * <p />
@@ -175,17 +176,17 @@ public class MainActivity extends Activity {
 	 *   ];
 	 * @since 1.0
 	 *
-	 * @param states An array of {@link PhonePrefixes} enum entries
+	 * @param states An array of {@link PhonePrefix} enum entries
 	 * @return An unmodifiable List of Map<String, String> that will be passed
 	 * as a SimpleAdapter constructor parameter
 	 */
-	private List<Map<String, String>> convertToListItems(final PhonePrefixes[] states) {
+	private List<Map<String, String>> convertToListItems(final PhonePrefix[] states) {
 		final List<Map<String, String>> listItem =
 	        new ArrayList<Map<String, String>>(states.length);
 
 		String tmpCountriesISOCode;
 		Locale tmpLocale;
-		for (final PhonePrefixes state: states) {
+		for (final PhonePrefix state: states) {
 			final Map<String, String> listItemMap = new HashMap<String, String>();
 			listItemMap.put(TEXT1, String.valueOf(state.getPhonePrefix()));
 			tmpCountriesISOCode = state.getAbbreviation();

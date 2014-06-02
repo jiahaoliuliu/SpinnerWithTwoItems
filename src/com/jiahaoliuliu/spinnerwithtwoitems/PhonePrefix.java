@@ -11,7 +11,7 @@ package com.jiahaoliuliu.spinnerwithtwoitems;
  * @since 1.0
  *
  */
-public enum PhonePrefixes {
+public enum PhonePrefix {
 	// United States
     US(1),
 
@@ -182,7 +182,7 @@ public enum PhonePrefixes {
 
     private int phonePrefix;
 
-	private PhonePrefixes(final int phonePrefix) {
+	private PhonePrefix(final int phonePrefix) {
         this.phonePrefix = phonePrefix;
 	}
 
@@ -218,17 +218,17 @@ public enum PhonePrefixes {
 	 * @return The prefix of that matches with the iso code
 	 *         First prefix if the country is not found
 	 */
-	public static PhonePrefixes fromISOCode(String isoCode) {
+	public static PhonePrefix fromISOCode(String isoCode) {
 		if (isoCode == null) {
 			throw new IllegalArgumentException("The iso code cannot be null");
 		}
 
 		// Select the first elementy by default
-		PhonePrefixes result = PhonePrefixes.values()[0];
-		for (PhonePrefixes phonePrefixes : values()) {
-			if (phonePrefixes.getAbbreviation() != null &&
-					phonePrefixes.getAbbreviation().equals(isoCode)) {
-				result = phonePrefixes;
+		PhonePrefix result = PhonePrefix.values()[0];
+		for (PhonePrefix phonePrefix : values()) {
+			if (phonePrefix.getAbbreviation() != null &&
+					phonePrefix.getAbbreviation().equals(isoCode)) {
+				result = phonePrefix;
 				break;
 			}
 		}
